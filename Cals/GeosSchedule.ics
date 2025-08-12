@@ -1,7 +1,7 @@
 BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//My Class Schedule Script//example.com//
-X-WR-CALNAME:Summer Quarter Schedule
+X-WR-CALNAME:Geo Gardener's Calendar
 X-WR-TIMEZONE:America/Denver
 BEGIN:VEVENT
 SUMMARY:CSC181 Scripting and Automation

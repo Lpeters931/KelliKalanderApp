@@ -1,7 +1,7 @@
 BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//My Class Schedule Script//example.com//
-X-WR-CALNAME:Summer Quarter Schedule
+X-WR-CALNAME:Owen Espitia's Calendar
 X-WR-TIMEZONE:America/Denver
 BEGIN:VEVENT
 SUMMARY:CSC210 Introduction to Web Presentation and Development	A1
