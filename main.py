@@ -3,7 +3,10 @@ import icalendar
 import datetime
 import os
 
-def print_event_details(st: icalendar.Component, et: icalendar.Component, summary: icalendar.Component, start_cutoff: datetime = datetime.datetime.now().date(), end_cutoff: datetime = datetime.date(datetime.datetime.now().year, 12, 31)):
+def print_event_details(st: icalendar.Component, 
+    et: icalendar.Component, summary: icalendar.Component, 
+    start_cutoff: datetime = datetime.datetime.now().date(), 
+    end_cutoff: datetime = datetime.date(datetime.datetime.now().year, 12, 31)):
     """Prints the details of the event.
 
     Args:
@@ -76,12 +79,15 @@ def make_cal() -> icalendar.Calendar:
     return cal
 
 def get_cal_paths(path_to_files: str = "./cals") -> list[str]:
-    """"
-    Gets calender file paths
-    
-    Args: path_to_files (str) - holds the .ics file path 
+    """"Gets calender file paths
 
-    Return: paths (ls) - list of .ics file paths
+    This function will return a list with all the .ics file in the provided path.
+
+    Args:
+        path_to_files (str) - holds the .ics file path, specifically the folder where the files are held
+
+    Return:
+        paths (ls) - list of paths for the .ics files
     """
     paths = []
     try:
@@ -91,9 +97,6 @@ def get_cal_paths(path_to_files: str = "./cals") -> list[str]:
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
     return paths
-
-def parsing_recurring_events():
-    pass
 
 
 if __name__ == "__main__":
