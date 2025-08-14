@@ -61,7 +61,6 @@ def seperate_rrule(calendar: ical.Calendar) -> dict:
         dict: dictionary with the event details from the passed calendar
         event containing an RRULE."""
 
-    nessisary_details = ['SUMMARY', 'DTSTART', 'DTEND']
     events = {}
     count = 0
     for event in calendar.walk('VEVENT'):
@@ -78,7 +77,7 @@ def seperate_rrule(calendar: ical.Calendar) -> dict:
                 'rrule': dict(rrule)
             }
             events[f"{calendar['X-WR-CALNAME']} Event {count}"] = event_details
-            print(events)
+    print(events)
 
 
 
