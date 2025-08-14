@@ -87,7 +87,7 @@ def get_cal_paths(path_to_files: str = "./cals") -> list[str]:
         path_to_files (str) - holds the .ics file path, specifically the folder where the files are held
 
     Return:
-        paths (ls) - list of paths for the .ics files
+        paths (list[str]) - list of paths for the .ics files
     """
     paths = []
     try:
