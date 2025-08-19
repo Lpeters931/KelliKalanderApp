@@ -18,8 +18,8 @@ def print_event_details(st: icalendar.Component,
     """
     start_str = str(st.dt)
     end_str = str(et.dt)
-    start_dt = date_time_cons(start_str.split()[0])
-    end_dt = date_time_cons(end_str.split()[0])
+    start_dt = date_cons(start_str.split()[0])
+    end_dt = date_cons(end_str.split()[0])
 
     if start_dt > start_cutoff and end_dt < end_cutoff:
         print(f"{summary}\n")
@@ -30,7 +30,7 @@ def print_event_details(st: icalendar.Component,
 
         print(f'Starts on a {start_dt.strftime("%A")} and ends on a {end_dt.strftime("%A")}\n')
 
-def date_time_cons(dt_str : str) -> datetime.date:
+def date_cons(dt_str : str) -> datetime.date:
     """ Create the datetime object by breaking up a string icalendar Component
 
     Args:

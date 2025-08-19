@@ -1,5 +1,5 @@
 from main import get_cal_paths
-from main import date_time_cons
+from main import date_cons
 from icalendar import prop
 import icalendar as ical
 from rich import print
@@ -67,15 +67,18 @@ def seperate_rrule(calendar: ical.Calendar) -> dict:
         if 'RRULE' in event:
             count += 1
             name = event['SUMMARY']
-            start_time = event.get('DTSTART', '[No Start Date]').dt
-            end_time = event.get('DTEND', '[No End Date]').dt
+            start_time = str(event.get('DTSTART', '[No Start Date]').dt).split()
+            end_time = str(event.get('DTEND', '[No End Date]').dt).split()
             rrule = event['RRULE']
             event_details = {
                 'name': str(name),
-                'start_time':  date_time_cons(str(start_time).split()[0]),
-                'end_time':  date_time_cons(str(end_time).split()[0]),
+                'start_date':  date_cons(start_time[0]),
+                'end_date':  date_cons(end_time[0]),
+                'start_time':  '[No Start Time Found]' if len(start_time) == 1 else start_time[1],
+                'end_time':  '[No End Time Found]' if len(end_time) == 1 else end_time[1],
                 'rrule': dict(rrule)
             }
+            print(f"[blink blue]{start_time}[/blink blue]")
             events[f"{calendar['X-WR-CALNAME']} Event {count}"] = event_details
     print(events)
 
@@ -85,7 +88,7 @@ if __name__ == "__main__":
     # cals = get_calendars(get_cal_paths())
     # parse_rrule(cals)
 
-    with open('./Cals/OwensSChedule.ics', 'r') as file:
+    with open('./Cals/personal.ics', 'r') as file:
         cal = ical.Calendar.from_ical(file.read())
         seperate_rrule(cal)
 
