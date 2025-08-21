@@ -93,7 +93,9 @@ def get_cal_paths(path_to_files: str = "./cals") -> list[str]:
     try:
         for file_name in os.listdir(path_to_files):
             full_path = f"{path_to_files}/{file_name}"
-            paths.append(full_path)
+            extention = file_name.split(".")[-1]
+            if extention.lower() == "ics":
+                paths.append(full_path)
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
     return paths
