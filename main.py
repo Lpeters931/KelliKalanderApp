@@ -100,6 +100,17 @@ def get_cal_paths(path_to_files: str = "./cals") -> list[str]:
         print(f"An unexpected error occurred: {e}")
     return paths
 
+def check_time_frame(event:icalendar.Event, 
+    start_cutoff: datetime.date = datetime.datetime.now().date(), 
+    end_cutoff: datetime.date = datetime.date(datetime.datetime.now().year, 12, 31)):
+    event_start = event.get("DTSTART", "[NO START TIME]")
+    event_end = event.get("DTEND", "[NO END TIME]")
+    if isinstance(event_start, icalendar.prop.vDDDTypes) and isinstance(event_end, icalendar.prop.vDDDTypes):
+        return True
+    else: 
+        return False
+
+    
 
 if __name__ == "__main__":
     # # make_cal()
